@@ -4,7 +4,6 @@ var Stack = function() {
   var stack = {};
   _.extend(stack, stackMethods);
   stack.storage = {};
-
   return stack;
 };
 
