@@ -4,21 +4,21 @@ class Stack {
   constructor() {
     this.storage = {};
   }
+
+  push(value) {
+    var keys = Object.keys(this.storage);
+    this.storage[keys.length] = value;
+  }
+
+  pop() {
+    var keys = Object.keys(this.storage);
+    var deleted = this.storage[keys[keys.length-1]];
+    delete this.storage[keys[keys.length-1]];
+    return deleted;
+  }
+
+  size() {
+    var keys = Object.keys(this.storage);
+    return keys.length;
+  }
 }
-
-Stack.prototype.push = function(value) {
-  var keys = Object.keys(this.storage);
-  this.storage[keys.length] = value;
-};
-
-Stack.prototype.pop = function() {
-  var keys = Object.keys(this.storage);
-  var deleted = this.storage[keys[keys.length-1]];
-  delete this.storage[keys[keys.length-1]];
-  return deleted;
-};
-
-Stack.prototype.size = function() {
-  var keys = Object.keys(this.storage);
-  return keys.length;
-};
