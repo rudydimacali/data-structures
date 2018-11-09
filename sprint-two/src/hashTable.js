@@ -8,7 +8,7 @@ var HashTable = function() {
 HashTable.prototype.insert = function(k, v) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   var outerArray = this._storage.get(index);
-  var innerArray = [k,v];
+  var innerArray = [k, v];
   
   // if we've never visited index, create an outer empty array there
   if (outerArray === undefined) {
@@ -41,8 +41,7 @@ HashTable.prototype.retrieve = function(k) {
 HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   var outerArray = this._storage.get(index);
-  var indexToBeRemoved;
-  var result;
+  var indexToBeRemoved, result;
   for (var i = 0; i < outerArray.length; i++) {
     var innerArray = outerArray[i];
     if (innerArray[0] === k) {
