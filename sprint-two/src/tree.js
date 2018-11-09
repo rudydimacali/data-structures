@@ -13,23 +13,20 @@ treeMethods.addChild = function(value) {
   this.children.push(node);
 };
 
-treeMethods.contains = function(target) {
+treeMethods.contains = function(target) {  
   if (this.value === target) {
     return true;
   }
-  // CHILDREN EXIST
   if (this.children.length) {
+  // CHILDREN EXIST
     var results = _.map(this.children, function(child) {
-      if(child.contains(target)) {
-        return true;
-      } else {
-        return false;
-      }
+      return child.contains(target);
     });
     return results.includes(true);
-  }
+  } else {
   // NO CHILDREN EXIST
-  return false;
+    return false;
+  }
 };
 
 
