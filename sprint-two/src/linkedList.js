@@ -10,6 +10,9 @@ var LinkedList = function() {
   };
 
   list.removeHead = function() {
+    if (list.head === null) {
+      return 'Cannot remove from an empty list';
+    }
     var oldHeadValue = list.head.value;
     list.head = list.head.next;
     return oldHeadValue;

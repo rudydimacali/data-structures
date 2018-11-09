@@ -50,6 +50,11 @@ describe('linkedList', function() {
     linkedList.removeHead();
     expect(linkedList.contains(4)).to.equal(false);
   });
+  
+  it('should not error when removing from an empty list', function() {
+    var result = linkedList.removeHead();
+    expect(result).to.equal('Cannot remove from an empty list');
+  });
 
   // add more tests here to test the functionality of linkedList
 });
