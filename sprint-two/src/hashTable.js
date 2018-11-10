@@ -41,6 +41,9 @@ HashTable.prototype.retrieve = function(k) {
 HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   var outerArray = this._storage.get(index);
+  if (outerArray === undefined) {
+    return 'Target key not found.';
+  }
   var indexToBeRemoved, result;
   for (var i = 0; i < outerArray.length; i++) {
     var innerArray = outerArray[i];
@@ -49,12 +52,12 @@ HashTable.prototype.remove = function(k) {
       result = innerArray[1];
     }
   }
-  
+  if (result === undefined) {
+    return 'Target key not found.';
+  }
   // remove found innerArray from outerArray
   outerArray.splice(indexToBeRemoved, 1);
-  
   return result;
-  
 };
 
 
