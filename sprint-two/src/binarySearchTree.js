@@ -9,6 +9,9 @@ var BinarySearchTree = function(value) {
 var BSTMethods = {};
 
 BSTMethods.insert = function(value) {
+  if (this.contains(value)) {
+    return 'Value already exists in BST.';
+  }
   var newBST = BinarySearchTree(value);
   if (value < this.value) {
     if (this.left === null) {
