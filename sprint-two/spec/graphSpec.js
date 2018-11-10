@@ -74,7 +74,8 @@ describe('graph', function() {
     graph.addNode(1);
     expect(graph.addEdge(3, 2)).to.equal('Node(s) not found.');
     graph.addEdge(2, 1);
-    // expect(graph.hasEdge(3, 2)).to.equal(false);
+    expect(graph.hasEdge(6, 7)).to.equal(false);
+    expect(graph.hasEdge(3, 2)).to.equal(false);
     expect(graph.hasEdge(2, 1)).to.equal(true);
   });
   
