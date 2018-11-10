@@ -42,9 +42,13 @@ Graph.prototype.hasEdge = function(fromNode, toNode) {
 
 // Connects two nodes in a graph by adding an edge between them.
 Graph.prototype.addEdge = function(fromNode, toNode) {
-  if (fromNode !== toNode) {
-    this.storage[fromNode].push(Number(toNode));
-    this.storage[toNode].push(Number(fromNode));
+  if (this.contains(Number(fromNode)) && this.contains(Number(toNode))) {
+    if (fromNode !== toNode) {
+      this.storage[fromNode].push(Number(toNode));
+      this.storage[toNode].push(Number(fromNode));
+    }   
+  } else {
+    return 'Node(s) not found.';
   }
 };
 
