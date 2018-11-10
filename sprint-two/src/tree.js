@@ -29,6 +29,29 @@ treeMethods.contains = function(target) {
   }
 };
 
+// Assumes only one instance of target
+treeMethods.removeChild = function(target) {
+  if (!this.contains(target)) {
+    return 'Target not found.';
+  }
+  var childrenValues = _.map(this.children, function(childObject) {
+    return childObject.value;
+  });
+  var index = childrenValues.indexOf(target);
+  if (index >= 0) {
+    this.children.splice(index, 1);
+    return target;
+  } else if (this.children.length > 0) {
+    var result;
+    for (var i = 0; i < this.children.length; i++) {
+      result = this.children[i].removeChild(target);
+      if (result === target) {
+        return result;
+      }
+    }
+  } 
+};
+
 
 /*
  * Complexity: What is the time complexity of the above functions?
