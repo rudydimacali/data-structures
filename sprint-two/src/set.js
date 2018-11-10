@@ -1,6 +1,6 @@
 var Set = function() {
   var set = Object.create(setPrototype);
-  set._storage = []; // fix me
+  set._storage = [];
   return set;
 };
 
@@ -21,6 +21,19 @@ setPrototype.remove = function(item) {
   if (index >= 0) {
     this._storage.splice(index, 1);
   }
+};
+
+// Accepts one set, and returns a set representing the intersection 
+// with the calling set
+setPrototype.intersection = function(secondSet) {
+  var intersectionSet = Set();
+  var storage = this._storage;
+  for (var i = 0; i < storage.length; i++) {
+    if (secondSet.contains(storage[i])) {
+      intersectionSet.add(storage[i]);
+    }
+  }
+  return intersectionSet;
 };
 
 /*
