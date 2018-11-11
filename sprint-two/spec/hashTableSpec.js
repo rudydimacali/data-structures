@@ -46,6 +46,13 @@ describe('hashTable', function() {
     expect(hashTable.retrieve(v2)).to.equal(v2);
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
+  
+  it('should handle removing a key that does not exist', function() {
+    hashTable.insert('test', 'value');
+    expect(hashTable.remove('testRemove')).to.equal('Target key not found.');
+    expect(hashTable.remove('test')).to.equal('value');
+    expect(hashTable.remove('test')).to.equal('Target key not found.');
+  });
 
   // (Advanced! Remove the extra "x" when you want the following tests to run)
   xit ('should double in size when needed', function() {

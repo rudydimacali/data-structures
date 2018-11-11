@@ -37,4 +37,15 @@ describe('binarySearchTree', function() {
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5, 2, 3, 7]);
   });
+
+  it('should not be able to insert an existing value', function() {
+    binarySearchTree.insert(2);
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(7);
+    expect(binarySearchTree.insert(2)).to.equal('Value already exists in BST.');
+    expect(binarySearchTree.insert(11)).to.equal(undefined);    
+    expect(binarySearchTree.insert(11)).to.equal('Value already exists in BST.');  
+    expect(binarySearchTree.insert(5)).to.equal('Value already exists in BST.');        
+  });  
+
 });
